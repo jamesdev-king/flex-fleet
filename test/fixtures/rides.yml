@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  company: one
+  driver: one
+  queried_at: 2025-03-08 14:55:16
+  requested_at: 2025-03-08 14:55:16
+  canceled_at: 2025-03-08 14:55:16
+  picked_up_at: 2025-03-08 14:55:16
+  completed_at: 2025-03-08 14:55:16
+  origin_address: 
+  origin_coordinate: MyString
+  destination_address: 
+  destination_coordinate: MyString
+  estimates: 
+
+two:
+  customer: two
+  company: two
+  driver: two
+  queried_at: 2025-03-08 14:55:16
+  requested_at: 2025-03-08 14:55:16
+  canceled_at: 2025-03-08 14:55:16
+  picked_up_at: 2025-03-08 14:55:16
+  completed_at: 2025-03-08 14:55:16
+  origin_address: 
+  origin_coordinate: MyString
+  destination_address: 
+  destination_coordinate: MyString
+  estimates: 

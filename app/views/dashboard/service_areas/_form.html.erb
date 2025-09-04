@@ -1,0 +1,70 @@
+<% content_for :head do %>
+  <link
+    href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css"
+    rel="stylesheet"
+  >
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
+  <script
+    src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.5.0/mapbox-gl-draw.js"
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.5.0/mapbox-gl-draw.css"
+    type="text/css"
+  >
+<% end %>
+<%= form_with(model: [:dashboard, service_area], class: "contents") do |form| %>
+  <% if service_area.errors.any? %>
+    <div
+      id="error_explanation"
+      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
+    >
+      <h2><%= pluralize(service_area.errors.count, "error") %>
+        prohibited this service_area from being saved:</h2>
+
+      <ul>
+        <% service_area.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name,
+                    class:
+                      "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div
+    data-controller="service-boundary"
+    class="my-5"
+    <% if service_area.boundary %>
+    data-service-boundary-polygon-value="<%= RGeo::GeoJSON.encode(service_area.boundary).to_json %>"
+    <% end %>
+  >
+    <%= form.label :boundary %>
+    <%= form.hidden_field :boundary,
+                      value: RGeo::GeoJSON.encode(service_area.boundary).to_json,
+                      data: {
+                        "service-boundary-target": "formField",
+                      } %>
+    <div data-service-boundary-target="container" class="w-full h-96"></div>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :status %>
+    <%= form.select :status,
+                options_for_select(
+                  ServiceArea.statuses.map { |k, v| [k.humanize.capitalize, k] },
+                  @service_area.status,
+                ),
+                class:
+                  "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

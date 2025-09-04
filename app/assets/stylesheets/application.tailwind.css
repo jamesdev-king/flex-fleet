@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .btn-primary {
+    @apply rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+    appearance: button;
+    cursor: pointer;
+  }
+
+  .btn-primary.danger {
+    @apply bg-rose-600 text-white hover:bg-rose-500 focus-visible:outline-rose-600;
+  }
+
+  .btn-secondary {
+    @apply rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
+    appearance: button;
+    cursor: pointer;
+  }
+
+  .btn-secondary.danger {
+    @apply text-rose-600 hover:text-rose-500 focus-visible:outline-rose-600 hover:bg-rose-50 active:text-rose-900;
+  }
+
+  .disabled,
+  .disabled * {
+    @apply !opacity-50 !cursor-not-allowed !pointer-events-none !line-through;
+  }
+}

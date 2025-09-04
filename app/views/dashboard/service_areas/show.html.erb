@@ -1,0 +1,46 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p
+        class="
+          py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block
+        "
+        id="notice"
+      ><%= notice %></p>
+    <% end %>
+
+    <div id="<%= dom_id @service_area %>">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Name:</strong>
+        <%= @service_area.name %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Status:</strong>
+        <%= @service_area.status.titleize %>
+      </p>
+      <div
+        data-controller="service-boundary"
+        class="my-5"
+        data-service-boundary-editable-value="false"
+        data-service-boundary-polygon-value="<%= RGeo::GeoJSON.encode(@service_area.boundary).to_json %>"
+      >
+        <div data-service-boundary-target="container" class="w-full h-96"></div>
+      </div>
+
+    </div>
+
+    <%= link_to "Edit this service area",
+    edit_dashboard_service_area_path(@service_area),
+    class: "btn-primary" %>
+    <%= link_to "Back to service areas",
+    dashboard_service_areas_path,
+    class: "btn-secondary" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this service area",
+      [:dashboard, @service_area],
+      method: :delete,
+      class: "btn-primary danger" %>
+    </div>
+  </div>
+</div>
