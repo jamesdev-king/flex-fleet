@@ -1,0 +1,23 @@
+<tr id="<%= dom_id employee %>">
+  <td
+    class="
+      whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0
+    "
+  ><%= link_to employee.user.email_address, [:dashboard, employee] %></td>
+  <td class=" whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell "><%= employee.company_employees.first.role %></td>
+  <td
+    class="
+      hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell
+    "
+  ><%= employee.created_at %></td>
+  <td
+    class="
+      whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0
+    "
+  >
+    <%= link_to edit_dashboard_employee_path(employee), class: "text-indigo-600 hover:text-indigo-900" do %>
+      Edit<span class="sr-only">,
+        <%= employee.user.email_address %></span>
+    <% end %>
+  </td>
+</tr>

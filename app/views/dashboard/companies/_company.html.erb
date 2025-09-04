@@ -1,0 +1,22 @@
+<tr id="<%= dom_id company %>">
+  <td
+    class="
+      whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0
+    "
+  ><%= link_to company.name, [:dashboard, company] %></td>
+  <td
+    class="
+      hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell
+    "
+  ><%= company.created_at %></td>
+  <td
+    class="
+      whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0
+    "
+  >
+    <%= link_to edit_dashboard_company_path(company), class: "text-indigo-600 hover:text-indigo-900" do %>
+      Edit<span class="sr-only">,
+        <%= company.name %></span>
+    <% end %>
+  </td>
+</tr>

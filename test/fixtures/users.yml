@@ -1,0 +1,37 @@
+<% password_digest = BCrypt::Password.create("password") %>
+
+owner:
+  email_address: owner@example.com
+  password_digest: <%= password_digest %>
+  authenticateable: owner
+  authenticateable_type: Employee
+  organization: one
+
+
+admin:
+  email_address: admin@example.com
+  password_digest: <%= password_digest %>
+  authenticateable: admin
+  authenticateable_type: Employee
+  organization: one
+
+service:
+  email_address: service@example.com
+  password_digest: <%= password_digest %>
+  authenticateable: service
+  authenticateable_type: Employee
+  organization: one
+
+driver:
+  email_address: driver@example.com
+  password_digest: <%= password_digest %>
+  authenticateable: driver
+  authenticateable_type: Employee
+  organization: one
+
+customer:
+  email_address: customer@example.com
+  password_digest: <%= password_digest %>
+  authenticateable: one
+  authenticateable_type: Customer
+  organization: one

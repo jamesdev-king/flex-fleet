@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+owner:
+  company: one
+  employee: owner
+  role: <%= CompanyEmployee.roles[:owner] %>
+
+admin:
+  company: one
+  employee: admin
+  role: <%= CompanyEmployee.roles[:admin] %>
+
+service:
+  company: one
+  employee: service
+  role: <%= CompanyEmployee.roles[:customer_support] %>
+
+driver:
+  company: one
+  employee: driver
+  role: <%= CompanyEmployee.roles[:driver] %>

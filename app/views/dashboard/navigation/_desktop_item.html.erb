@@ -1,0 +1,17 @@
+<li>
+  <%= link_to(item.url,
+                class:["
+                  group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400
+                  hover:bg-gray-800 hover:text-white
+                  ", {
+                    "bg-gray-800 text-white": controller_name == item.controller
+                  }]) do %>
+    <i
+      class="
+        shrink-0 size-6 mt-px text-xl leading-6 text-center fa-solid
+        <%= item.icon %>
+      "
+    ></i>
+    <%= item.title %>
+  <% end %>
+</li>
